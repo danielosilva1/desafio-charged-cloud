@@ -1,99 +1,142 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Teste Técnico para Vaga de Estágio na Charged Cloud
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Objetivo
+Desenvolver uma aplicação web utilizando Nest.js, Vite e MySQL que permita gerenciar (cadastrar, consultar, atualizar e excluir) empresas.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+<br></br>
+# Especificação dos Requisitos Funcionais
 
-## Project setup
+Com base na especificação da aplicação, foi possível obter as seguintes histórias de usuário:
 
-```bash
-$ npm install
+### Título: Fazer Login/logout
+
+Como **usuário da aplicação**
+
+eu quero **fazer login/logout usando a autenticação do Google (OAuth 2.0)**
+
+para **acessar as rotas protegidas da aplicação**
+
+**Critério (s) de aceitação:**
+
+1. O usuário deve ter o acesso validado (negado ou permitido) após logar via conta do Google.
+
+
+### Título: Cadastrar Empresa
+
+Como **usuário autenticado**
+
+eu quero **cadastrar uma empresa**
+
+para **adicionar uma nova empresa ao banco de dados**
+
+**Critério (s) de aceitação:**
+
+1. Os campos CNPJ, nome, endereço e telefone devem ser obrigatórios;
+
+2. O CNPJ de uma empresa só pode aparecer em um único registro;
+
+3. Os dados devem ser persistidos no banco de dados MySQL;
+
+4. Apenas usuários autenticados podem cadastrar uma empresa.
+
+
+### Título: Consultar Empresas
+
+Como **usuário autenticado**
+
+eu quero **consultar empresas usando filtros de busca**
+
+para **visualizar todas as empresas que se enquadrem no filtro definido**
+
+**Critério (s) de aceitação:**
+
+1. O usuário deve poder filtrar por CNPJ ou nome (⭐ EXTRA);
+
+1. Se nenhum critério de busca for informado, o usuário deve receber os dados de todas as empresas. Caso contrário, deve receber os dados das empresas de acordo com os critérios de filtragem;
+
+2. Apenas usuários autenticados podem consultar empresa.
+
+
+### Título: Atualizar Empresa
+
+Como **usuário autenticado**
+
+eu quero **atualizar uma empresa**
+
+para **atualizar/corrigir os dados de uma empresa**
+
+**Critério (s) de aceitação:**
+
+1. Os campos CNPJ, nome, endereço e telefone devem ser obrigatórios;
+
+2. O CNPJ de uma empresa só pode aparecer em um único registro;
+
+3. Apenas usuários autenticados podem atualizar uma empresa.
+
+
+### Título: Deletar Empresa
+
+Como **usuário autenticado**
+
+eu quero **deletar uma empresa**
+
+para **remover uma empresa do banco de dados**
+
+**Critério (s) de aceitação:**
+
+1. Apenas usuários autenticados podem excluir uma empresa.
+
+
+### Título: Cadastrar Endereço (⭐ EXTRA)
+
+Como **usuário autenticado**
+
+eu quero **cadastrar um novo endereço**
+
+para **defini-lo com endereço de uma empresa**
+
+**Critério (s) de aceitação:**
+
+1. Apenas usuários autenticados podem cadastrar um endereço.
+
+
+### Título: Consultar Endereço (⭐ EXTRA)
+
+Como **usuário autenticado**
+
+eu **quero consultar todos os endereços**
+
+para **listar todos os endereços no banco de dados**
+
+**Critério (s) de aceitação:**
+
+1. Apenas usuários autenticados podem consultar endereços endereço.
+
+#### 🔗 A especificação das histórias de usuário e a gestão dos cards foram realizadas no Trello e podem ser acessadas <a href="https://trello.com/invite/b/674487f82f09cfbb7a39a1e1/ATTI0142def8be8178ae2f1e1993f4599bdbDBA6962E/desafio-charged-cloud-backend">aqui</a>.
+
+
+
+<br></br>
+# Definição de um Diagrama Entidade Relacionamento
+
+![Print do Diagrama Entidade Relacionamento](<backend/documentation/Diagrama Entidade Relacionamento.jpg>)
+
+**📋 Decisão Técnica: Relacionamento entre Empresa e Endereço**
+
+Inicialmente, eu acreditava que um endereço poderia abrigar apenas uma empresa. Nesse caso, o relacionamento entre Empresa e Endereço seria um-para-um. Nesse cenário, a ideia inicial seria adicionar os dados de endereço na mesma tabela da Empresa para evitar a necessidade de junção de tabelas em eventuais buscas por endereço. Veja que isso não geraria redundância de endereços na tabela Empresa pois, teoricamente, cada empresa teria um endereço diferente.
+
+No entanto, observei que um endereço pode, sim, abrigar mais de uma empresa (veja a fundamentação legal [aqui](https://www.jlramos.com.br/blog/e-possivel-ter-duas-ou-mais-empresas-no-mesmo-endereco-entenda-regras-e-limitacoes/)). Nesse caso, a ideia inicial poderia gerar redundância de endereços no banco. Portanto, optei por criar a tabela Endereço e definir um relacionamento entre Empresa e Endereço de forma que a ideia *"uma empresa está localizada em um único endereço e um endereço pode abrigar 0 ou mais empresas"* pudesse ser expressa.
+
+
+<br></br>
+# Instruções de Execução
+
+⚙️: O arquivo .env foram disponibilizados à empresa;
+
+Após adicionar o .env do backend na raiz do projeto, execute (via terminal e na raiz do projeto):
 ```
-
-## Compile and run the project
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm run start:dev
 ```
-
-## Run tests
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+No navegador, acesse: [http://localhost:3000/api/auth/google/login](http://localhost:3000/api/auth/google/login).
