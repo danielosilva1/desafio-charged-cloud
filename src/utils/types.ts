@@ -12,3 +12,10 @@ export type addressDetails = {
     city: string;
     state: string;
 }
+
+export type CompanyDetails = {
+    cnpj: string;
+    name: string;
+    phoneNumber: string;
+    addressId: number;
+}

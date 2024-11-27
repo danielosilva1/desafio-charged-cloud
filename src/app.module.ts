@@ -9,6 +9,8 @@ import { User } from './type-orm/entities/User';
 import { PassportModule } from '@nestjs/passport';
 import { AddressModule } from './address/address.module';
 import { Address } from './type-orm/entities/Address';
+import { Company } from './type-orm/entities/Company';
+import { CompanyModule } from './company/company.module';
 
 @Module({
 	imports: [
@@ -20,12 +22,13 @@ import { Address } from './type-orm/entities/Address';
 			username: process.env.DATABASE_USERNAME,
 			password: process.env.DATABASE_PASSWORD,
 			database: process.env.DATABASE_NAME,
-			entities: [User, Address],
+			entities: [User, Address, Company ],
 			synchronize: true,
 		}),
 		PassportModule.register({ session: true }),
 		AuthModule,
-		AddressModule
+		AddressModule,
+		CompanyModule
 	],
 	controllers: [AuthController, AppController],
 	providers: [AppService],
