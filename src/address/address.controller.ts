@@ -17,13 +17,12 @@ export class AddressController {
         throw new UnauthorizedException({ msg: 'User is not authenticated' });
     }
 
-    @Get('get')
-    getAddresses(@Req() req: Request | any) {
+    @Get('get-all')
+    async getAddresses(@Req() req: Request | any) {
+        // Valida se usuário está autenticado
         if (req.user) {
-            console.log('Address Controller');
-            console.log('Vou chamar a função do AddressService que retorna endereços...');
-            this.addressService.getAddress();
-            return;
+            const addresses = await this.addressService.getAllAddresses();
+            return addresses;
         }
         throw new UnauthorizedException({ msg: 'User is not authenticated' });
     }

@@ -42,8 +42,12 @@ export class AddressService {
         }
     }
 
-    async getAddress() {
-        console.log('AddressService');
-        console.log('Vou retornar os endereços...');
+    async getAllAddresses() {
+        try {
+            const addresses = await this.addressRepositoy.find();
+            return addresses;
+        } catch {
+            throw new InternalServerErrorException({ msg: 'An internal error has occurred' });
+        }
     }
 }
