@@ -16,7 +16,19 @@ export class AuthController {
     // Define rota para a tela de login do Google (para onde usuário será redirecionado quando acessar api/auth/google/login). google/direct foi definido na Google Cloud
     @Get('google/redirect')
     @UseGuards(GoogleAuthGuard)
-    handleRedirect(@Req() req, @Res() res: Response) {
+    handleRedirect() {
         return { msg: 'OK' };
+    }
+
+    @Get('status')
+    user(@Req() req: Request | any) {
+        // Ao serializar a sessão, o objeto de usuário é anexado à requisição
+        // Sempre que uma rota é acessa a sessão é desserializada (logo, a cada rota verifica-se se usuário está ou não autenticado)
+        if (req.user) {
+            // Sessão foi desserializada e objeto do usuário foi encontrado: usuário está logado
+            return {msg: 'Authenticated'};
+        }
+        // Sessão foi desserializada e objeto do usuário não foi encontrado: usuário não está logado
+        return {msg: 'Not Authenticated'};
     }
 }

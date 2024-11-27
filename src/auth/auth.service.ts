@@ -26,4 +26,9 @@ export class AuthService {
             throw new InternalServerErrorException({msg: 'Ocorreu um erro ao processar requisição'});
         }
     }
+
+    async findUser(id: number) {
+        const user = await this.userRepository.findOneBy({ id });
+        return user;
+    }
 }

@@ -6,6 +6,7 @@ import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './type-orm/entities/User';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
 	imports: [
@@ -20,6 +21,7 @@ import { User } from './type-orm/entities/User';
 			entities: [User],
 			synchronize: true,
 		}),
+		PassportModule.register({ session: true }),
 		AuthModule
 	],
 	controllers: [AuthController, AppController],
