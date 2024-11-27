@@ -12,7 +12,7 @@ async function bootstrap() {
 		saveUninitialized: false,
 		resave: false,
 		cookie: {
-			maxAge: 8 * 60 * 60 * 1000 // 8 horas em milissegundos
+			maxAge: 24 * 60 * 60 * 1000 // 24 horas em milissegundos
 		}
 	}));
 	app.use(passport.initialize());

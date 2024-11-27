@@ -31,4 +31,14 @@ export class AuthController {
         // Sessão foi desserializada e objeto do usuário não foi encontrado: usuário não está logado
         return {msg: 'Not Authenticated'};
     }
+
+    @Get('logout')
+    handleLogout(@Req() req: Request | any) {
+        if (req.user) {
+            // Destrói a sessão ativa do usuário autenticado
+            req.session.destroy();
+            return { msg: 'Success logout' };
+        }
+        return { msg: 'User not authenticated yet' }
+    }
 }
