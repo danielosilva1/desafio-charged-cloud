@@ -121,7 +121,7 @@ para **listar todos os endereços no banco de dados**
 <br></br>
 # Definição de um Diagrama Entidade Relacionamento
 
-![Print do Diagrama Entidade Relacionamento](<backend/documentation/Diagrama Entidade Relacionamento.jpg>)
+![Imagem contendo o Diagrama Entidade Relacionamento](<documentation/Diagrama Entidade Relacionamento.jpg>)
 
 **📋 Decisão Técnica: Relacionamento entre Empresa e Endereço**
 
