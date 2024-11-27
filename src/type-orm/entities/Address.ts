@@ -1,5 +1,5 @@
+import { IsInt, Min } from 'class-validator';
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-
 
 @Entity({ name: 'addresses' })
 export class Address {
