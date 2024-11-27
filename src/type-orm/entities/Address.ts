@@ -1,5 +1,6 @@
 import { IsInt, Min } from 'class-validator';
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Company } from './Company';
 
 @Entity({ name: 'addresses' })
 export class Address {
@@ -27,6 +28,10 @@ export class Address {
     @Column()
     state: string;
 
+    // Cada empresa tem apenas uma entrada na tabela de endereços
+    @OneToMany(() => Company, (company) => company.address)
+    companies: Company[];
+    
     @CreateDateColumn()
     createdAt: Date;
 

@@ -1,4 +1,4 @@
-import { BadRequestException, ConflictException, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { ConflictException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { validate, validateOrReject } from 'class-validator';
 import { Address } from 'src/type-orm/entities/Address';
@@ -27,7 +27,7 @@ export class AddressService {
 
             if (addressExists) {
                 // Endereço existe, retorna exceção
-                throw new ConflictException({ msg: 'Address already exists' });
+                throw new ConflictException('Address already exists');
             }
 
             // Endereço não existe: cadastra
@@ -36,7 +36,7 @@ export class AddressService {
         } catch (error) {
             if (error.status == 409) {
                 // Recupera o erro lançado na função para informar que o endereço já existe
-                throw new ConflictException({ msg: 'Address already exists' });
+                throw new ConflictException({ msg: error.message });
             }
             throw new InternalServerErrorException({ msg: 'An internal error has occurred' });
         }

@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { Address } from './Address';
 
 @Entity({ name: 'companies' })
@@ -15,8 +15,9 @@ export class Company {
     @Column()
     phoneNumber: string;
 
-    @ManyToOne(type => Address)
-    @JoinColumn() // Cria coluna addressId na tabela companies
+    // Id do endereço pode ter várias entradas na tabela de empresas
+    @ManyToOne(() => Address, (address) => address.companies)
+    @JoinColumn({name: 'addressId'}) // Cria campo addressId na tabela de empresas
     address: Address;
 
     @CreateDateColumn()
