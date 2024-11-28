@@ -14,9 +14,9 @@ Desenvolver uma aplicação web utilizando Nest.js, Vite e MySQL que permita ger
     - [Deletar Empresa](#Deletar-Empresa)
     - [Cadastrar Endereço (⭐ EXTRA)](#Cadastrar-Endereço-(⭐-EXTRA))
     - [Consultar Endereço (⭐ EXTRA)](#Consultar-Endereço-(⭐-EXTRA))
-    - [Especificação completa das Histórias de Usuário (Trello)](#-🔗-A-especificação-das-histórias-de-usuário-e-a-gestão-dos-cards-foram-realizadas-no-Trello-e-podem-ser-acessadas-aqui.)
+    - [Especificação completa das Histórias de Usuário (Trello)](#-A-especificação-das-histórias-de-usuário-e-a-gestão-dos-cards-foram-realizadas-no-trello-e-podem-ser-acessadas-aqui)
 2. [Definição de Diagrama Entidade Relacionamento](#Definição-de-um-Diagrama-Entidade-Relacionamento)
-    - [📋 Discussão sobre decisão técnica](#📋-Decisão-Técnica-(Relacionamento-entre-Empresa-e-Endereço))
+    - [📋 Discussão sobre decisão técnica](#Decisão-Técnica:-Relacionamento-entre-Empresa-e-Endereço))
 3. [Instruções para Execução do Projeto](#Instruções-de-Execução)
 
 <br></br>
@@ -137,7 +137,7 @@ para **listar todos os endereços no banco de dados**
 
 ![Imagem contendo o Diagrama Entidade Relacionamento](<documentation/Diagrama Entidade Relacionamento.jpg>)
 
-**📋 Decisão Técnica (Relacionamento entre Empresa e Endereço)**
+#### 📋 Decisão Técnica: Relacionamento entre Empresa e Endereço
 
 Inicialmente, eu acreditava que um endereço poderia abrigar apenas uma empresa. Nesse caso, o relacionamento entre Empresa e Endereço seria um-para-um. Nesse cenário, a ideia inicial seria adicionar os dados de endereço na mesma tabela da Empresa para evitar a necessidade de junção de tabelas em eventuais buscas por endereço. Veja que isso não geraria redundância de endereços na tabela Empresa pois, teoricamente, cada empresa teria um endereço diferente.
 
