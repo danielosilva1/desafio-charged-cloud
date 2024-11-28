@@ -47,6 +47,7 @@ export class CompanyService {
             // Consulta com base no SQL
             const companies = await this.companyRepository
             .createQueryBuilder('companie')
+            .leftJoinAndSelect('companie.address', 'address') // Recupera endereço na tabela 'addresses' com base na chave estrangeira definida em 'companies'
             .where(
                 '(:cnpj IS NULL OR companie.cnpj LIKE :cnpjJoker) AND (:name IS NULL OR companie.name LIKE :nameJoker)',
                 {cnpj: cnpj, cnpjJoker: `%${cnpj}%`, name: name, nameJoker: `%${name}%`}
