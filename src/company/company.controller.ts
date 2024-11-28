@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Inject, Post, Query, Req, UnauthorizedException } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Patch, Post, Query, Req, UnauthorizedException } from '@nestjs/common';
 import { CompanyService } from './company.service';
 import { CompanyDetails } from 'src/utils/types';
 
@@ -18,16 +18,19 @@ export class CompanyController {
         throw new UnauthorizedException({ msg: 'User is not authenticated' });
     }
 
+    @Get('get')
+    getCompanies(@Req() req: Request | any, @Query() params: any) {
+        if (req.user) {
+            const { cnpj, name } = params;
+            const companies = this.companyService.getCompanies(cnpj, name);
+            return companies;
+        }
+        throw new UnauthorizedException({ msg: 'User is not authenticated' });
+    }
+
     capitalizeTextualFields(company: CompanyDetails) {
         company.cnpj = company.cnpj.toUpperCase();
         company.name = company.name.toUpperCase();
         return company;
-    }
-
-    @Get('get')
-    getCompanies(@Req() req: Request, @Query() params: any) {
-        const { cnpj, name } = params;
-        const companies = this.companyService.getCompanies(cnpj, name);
-        return companies;
     }
 }
