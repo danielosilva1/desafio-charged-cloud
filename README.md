@@ -1,16 +1,30 @@
-# Teste Técnico para Vaga de Estágio na Charged Cloud
+# Teste Técnico para Vaga na Charged Cloud
 
 ## Objetivo
 Desenvolver uma aplicação web utilizando Nest.js, Vite e MySQL que permita gerenciar (cadastrar, consultar, atualizar e excluir) empresas.
 
+<br></br>
+## Tabela de Conteúdos
 
+1. [Especificação dos Requisitos Funcionais - Histórias de Usuário](#Especificação-dos-Requisitos-Funcionais)
+    - [Fazer Login/logout via Google Auth 2.0](#Fazer-Login/logout-via-Google-Auth-2.0)
+    - [Cadastrar Empresa](#Cadastrar-Empresa)
+    - [Consultar Empresas](#Consultar-Empresas)
+    - [Atualizar Empresa](#Atualizar-Empresa)
+    - [Deletar Empresa](#Deletar-Empresa)
+    - [Cadastrar Endereço (⭐ EXTRA)](#Cadastrar-Endereço-(⭐-EXTRA))
+    - [Consultar Endereço (⭐ EXTRA)](#Consultar-Endereço-(⭐-EXTRA))
+    - [Especificação completa das Histórias de Usuário (Trello) ](#####-🔗-A-especificação-das-histórias-de-usuário-e-a-gestão-dos-cards-foram-realizadas-no-Trello-e-podem-ser-acessadas-[aqui](https://trello.com/invite/b/674487f82f09cfbb7a39a1e1/ATTI0142def8be8178ae2f1e1993f4599bdbDBA6962E/desafio-charged-cloud-backend).)
+2. [Definição de Diagrama Entidade Relacionamento](#Definição-de-um-Diagrama-Entidade-Relacionamento)
+    - [📋 Discussão sobre decisão técnica](#📋-Decisão-Técnica:-Relacionamento-entre-Empresa-e-Endereço)
+3. [Instruções para Execução do Projeto](#Instruções-de-Execução)
 
 <br></br>
 # Especificação dos Requisitos Funcionais
 
 Com base na especificação da aplicação, foi possível obter as seguintes histórias de usuário:
 
-### Título: Fazer Login/logout
+### Título: Fazer Login/logout via Google Auth 2.0
 
 Como **usuário da aplicação**
 
@@ -114,7 +128,7 @@ para **listar todos os endereços no banco de dados**
 
 1. Apenas usuários autenticados podem consultar endereços endereço.
 
-#### 🔗 A especificação das histórias de usuário e a gestão dos cards foram realizadas no Trello e podem ser acessadas <a href="https://trello.com/invite/b/674487f82f09cfbb7a39a1e1/ATTI0142def8be8178ae2f1e1993f4599bdbDBA6962E/desafio-charged-cloud-backend">aqui</a>.
+#### 🔗 A especificação das histórias de usuário e a gestão dos cards foram realizadas no Trello e podem ser acessadas [aqui](https://trello.com/invite/b/674487f82f09cfbb7a39a1e1/ATTI0142def8be8178ae2f1e1993f4599bdbDBA6962E/desafio-charged-cloud-backend).
 
 
 
