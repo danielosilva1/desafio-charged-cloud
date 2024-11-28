@@ -16,7 +16,7 @@ Desenvolver uma aplicação web utilizando Nest.js, Vite e MySQL que permita ger
     - [Consultar Endereço (⭐ EXTRA)](#Consultar-Endereço-(⭐-EXTRA))
     - [Especificação completa das Histórias de Usuário (Trello)](#-A-especificação-das-histórias-de-usuário-e-a-gestão-dos-cards-foram-realizadas-no-trello-e-podem-ser-acessadas-aqui)
 2. [Definição de Diagrama Entidade Relacionamento](#Definição-de-um-Diagrama-Entidade-Relacionamento)
-    - [📋 Discussão sobre decisão técnica](#Decisão-Técnica:-Relacionamento-entre-Empresa-e-Endereço))
+    - [📋 Discussão sobre decisão técnica](##-Decisão-Técnica-Relacionamento-entre-Empresa-e-Endereço))
 3. [Instruções para Execução do Projeto](#Instruções-de-Execução)
 
 <br></br>
