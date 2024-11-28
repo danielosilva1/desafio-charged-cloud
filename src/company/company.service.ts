@@ -41,8 +41,23 @@ export class CompanyService {
         }
     }
 
-    async getCompanies() {
-        console.log('CompanyService');
-        console.log('Vou cadastrar empresa com os seguintes dados:');
+    async getCompanies(cnpj, name) {
+        // Parâmetros, quando não informados, vêm como undefined. Para a consulta SQL funcionar, seta como NULL
+        if (!cnpj) {
+            cnpj = null;
+        }
+        if (!name) {
+            name = null;
+        }
+
+        // Consulta com base no SQL
+        const companies = await this.companyRepository
+        .createQueryBuilder('companie')
+        .where(
+            '(:cnpj IS NULL OR companie.cnpj LIKE :cnpjJoker) AND (:name IS NULL OR companie.name LIKE :nameJoker)',
+            {cnpj: cnpj, cnpjJoker: `%${cnpj}%`, name: name, nameJoker: `%${name}%`}
+        ).getMany();
+
+        return companies;
     }
 }
