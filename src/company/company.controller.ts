@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Inject, Param, Patch, Post, Query, Req, UnauthorizedException } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Inject, Param, Patch, Post, Query, Req, UnauthorizedException } from '@nestjs/common';
 import { CompanyService } from './company.service';
 import { CompanyDetails } from 'src/utils/types';
 
@@ -34,6 +34,15 @@ export class CompanyController {
             company = this.capitalizeTextualFields(company);
             const updatedCompany = await this.companyService.updateCompany(id, company);
             return updatedCompany;
+        }
+        throw new UnauthorizedException({ msg: 'User is not authenticated' });
+    }
+
+    @Delete('delete/:id')
+    async deleteCompany(@Req() req: Request | any, @Param('id') id: string) {
+        if (req.user) {
+            const deletedCompany = await this.companyService.deleteCompany(id);
+            return deletedCompany;
         }
         throw new UnauthorizedException({ msg: 'User is not authenticated' });
     }

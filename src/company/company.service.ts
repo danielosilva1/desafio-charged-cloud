@@ -104,4 +104,13 @@ export class CompanyService {
             throw new InternalServerErrorException({ msg: 'An internal error has occurred' });
         }
     }
+
+    async deleteCompany(id: string) {
+        try {
+            const deletedCompany = await this.companyRepository.delete({ id: Number(id) });
+            return deletedCompany;
+        } catch {
+            throw new InternalServerErrorException({ msg: 'An internal error has occurred' });
+        }
+    }
 }
