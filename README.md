@@ -17,9 +17,9 @@ Desenvolver uma aplicação web utilizando Nest.js, Vite e MySQL que permita ger
     - [Especificação completa das Histórias de Usuário (Trello)](#-A-especificação-das-histórias-de-usuário-e-a-gestão-dos-cards-foram-realizadas-no-trello-e-podem-ser-acessadas-aqui)
 2. [Definição de Diagrama Entidade Relacionamento](#Definição-de-um-Diagrama-Entidade-Relacionamento)
     - [📋 Discussão sobre decisão técnica](#-Decisão-Técnica-Relacionamento-entre-Empresa-e-Endereço)
-3. [Instruções para Instalação e Execução do Projeto](#Instruções-de-Execução-e-Execução-Localmente)
-    - [Configuração do Banco MySQL Localmente](#-Configurando-o-banco-de-dados-MySQL-localmente)
-    - [Instalação e Execução do Projeto Localmente](#-Instalando-e-executando-o-projeto)
+3. [Instruções para Instalação e Execução do Projeto](#Instruções-de-Instalação-e-Execução-Localmente)
+    - [Configuração do Banco MySQL Localmente](#Configurando-o-banco-de-dados-MySQL-localmente)
+    - [Instalação e Execução do Projeto Localmente](#Instalando-e-executando-o-projeto)
 
 <br></br>
 # Especificação dos Requisitos Funcionais
@@ -150,7 +150,7 @@ No entanto, observei que um endereço pode, sim, abrigar mais de uma empresa (ve
 # Instruções de Instalação e Execução Localmente
 
 ## Configurando o banco de dados MySQL localmente
-Altere os campos DATABASE_USERNAME e DATABASE_PASSWORD no arquivo .env fornecido para o usuário e senha do seu banco MySQL local
+Altere os campos DATABASE_USERNAME, DATABASE_PASSWORD e DATABASE_NAME no arquivo .env fornecido para o usuário, senha e nome do banco do seu banco MySQL local
 
 ## Instalando e executando o projeto
 1. Clone o projeto para a sua máquina;
