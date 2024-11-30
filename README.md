@@ -17,7 +17,9 @@ Desenvolver uma aplicação web utilizando Nest.js, Vite e MySQL que permita ger
     - [Especificação completa das Histórias de Usuário (Trello)](#-A-especificação-das-histórias-de-usuário-e-a-gestão-dos-cards-foram-realizadas-no-trello-e-podem-ser-acessadas-aqui)
 2. [Definição de Diagrama Entidade Relacionamento](#Definição-de-um-Diagrama-Entidade-Relacionamento)
     - [📋 Discussão sobre decisão técnica](#-Decisão-Técnica-Relacionamento-entre-Empresa-e-Endereço)
-3. [Instruções para Execução do Projeto](#Instruções-de-Execução)
+3. [Instruções para Instalação e Execução do Projeto](#Instruções-de-Execução-e-Execução-Localmente)
+    - [Configuração do Banco MySQL Localmente](#-Configurando-o-banco-de-dados-MySQL-localmente)
+    - [Instalação e Execução do Projeto Localmente](#-Instalando-e-executando-o-projeto)
 
 <br></br>
 # Especificação dos Requisitos Funcionais
@@ -145,12 +147,26 @@ No entanto, observei que um endereço pode, sim, abrigar mais de uma empresa (ve
 
 
 <br></br>
-# Instruções de Execução
+# Instruções de Instalação e Execução Localmente
 
-⚙️: O arquivo .env foram disponibilizados à empresa;
+## Configurando o banco de dados MySQL localmente
+Altere os campos DATABASE_USERNAME e DATABASE_PASSWORD no arquivo .env fornecido para o usuário e senha do seu banco MySQL local
 
-Após adicionar o .env do backend na raiz do projeto, execute (via terminal e na raiz do projeto):
-```
-npm run start:dev
-```
-No navegador, acesse: [http://localhost:3000/api/auth/google/login](http://localhost:3000/api/auth/google/login).
+## Instalando e executando o projeto
+1. Clone o projeto para a sua máquina;
+2. Adicione na raiz do projeto o arquivo .env disponibilizado;
+3. Instale as dependências do projeto;
+4. Rode o projeto
+    
+    No diretório raiz, execute:
+    ```
+    npm run start:dev
+    ```
+5. Execute o projeto
+    - Sem integração com front
+    
+        No navegador, acesse: [http://localhost:3000/api/auth/google/login](http://localhost:3000/api/auth/google/login)
+    
+    - Com integração com front
+        
+        Acesse o repositório do frontend disponível [aqui](https://github.com/danielosilva1/desafio-charged-cloud-frontend) e siga as instruções de instalação/execução disponíveis lá
