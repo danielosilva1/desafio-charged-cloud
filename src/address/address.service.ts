@@ -30,6 +30,10 @@ export class AddressService {
             }
 
             // Endereço não existe: cadastra
+            if (address.additionalInfo == '') {
+                // Salva informação de complemento ausente como nulo
+                address.additionalInfo = null;
+            }
             const newAddress = this.addressRepositoy.create(address);
             return this.addressRepositoy.save(newAddress);
         } catch (error) {

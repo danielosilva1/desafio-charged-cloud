@@ -19,7 +19,7 @@ export class Address {
     @Column()
     number: number;
 
-    @Column()
+    @Column({ nullable: true })
     additionalInfo: string;
 
     @Column()
