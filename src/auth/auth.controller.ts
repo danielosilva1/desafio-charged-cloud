@@ -26,10 +26,10 @@ export class AuthController {
         // Sempre que uma rota é acessa a sessão é desserializada (logo, a cada rota verifica-se se usuário está ou não autenticado)
         if (req.user) {
             // Sessão foi desserializada e objeto do usuário foi encontrado: usuário está logado
-            return {msg: 'Authenticated'};
+            return {msg: 'Autenticado'};
         }
         // Sessão foi desserializada e objeto do usuário não foi encontrado: usuário não está logado
-        return {msg: 'Not Authenticated'};
+        return {msg: 'Não autenticado'};
     }
 
     @Get('logout')
@@ -37,8 +37,8 @@ export class AuthController {
         if (req.user) {
             // Destrói a sessão ativa do usuário autenticado
             req.session.destroy();
-            return { msg: 'Success logout' };
+            return { msg: 'Logout realizado com sucesso' };
         }
-        return { msg: 'User not authenticated yet' }
+        return { msg: 'Usuário não estava logado' }
     }
 }

@@ -17,7 +17,7 @@ export class CompanyService {
             const companyExists = await this.companyRepository.findOne({ where: { cnpj: company.cnpj }});
 
             if (companyExists) {
-                throw new ConflictException('Company already exists');
+                throw new ConflictException('CNPJ já está cadastrado');
             }
 
             // Empresa ainda não cadastrada: realiza cadastro
@@ -26,7 +26,7 @@ export class CompanyService {
             
             if (!address) {
                 // Id do endereço não foi encontrado: informa erro
-                throw new ConflictException('Address not found');
+                throw new ConflictException('Endereço não encontrado');
             }
 
             // Adiciona endereço da empresa
@@ -38,7 +38,7 @@ export class CompanyService {
                 // Recupera o erro lançado na função para informar que a empresa já existe
                 throw new ConflictException({ msg: error.message });
             }
-            throw new InternalServerErrorException({ msg: 'An internal error has occurred' });
+            throw new InternalServerErrorException({ msg: 'Ocorreu um erro interno' });
         }
     }
 
@@ -55,7 +55,7 @@ export class CompanyService {
 
             return companies;
         } catch {
-            throw new InternalServerErrorException({ msg: 'An internal error has occurred' });
+            throw new InternalServerErrorException({ msg: 'Ocorreu um erro interno' });
         }
     }
 
@@ -66,7 +66,7 @@ export class CompanyService {
 
             if (!company) {
                 // Empresa não encontrada
-                throw new NotFoundException({ msg: 'Company not found' });
+                throw new NotFoundException({ msg: 'Empresa não encontrada' });
             }
 
             // Verifica se o CNPJ recebido está cadastrado em outra empresa
@@ -78,14 +78,14 @@ export class CompanyService {
             });
 
             if (cnpjExists)
-                throw new ConflictException({ msg: 'CNPJ already exists' });
+                throw new ConflictException({ msg: 'CNPJ já está cadastrado' });
 
             // Valida novo endereço
             const address = await this.addressRepository.findOneBy({ id: newDataCompany.addressId });
             
             if (!address) {
                 // Id do endereço não foi encontrado: informa erro
-                throw new ConflictException({ msg: 'Address not found'} );
+                throw new NotFoundException({ msg: 'Endereço não encontrado'} );
             }
 
             // Atualiza dados da empresa
@@ -102,7 +102,7 @@ export class CompanyService {
                 // Erros lançados na função
                 throw error;
             }
-            throw new InternalServerErrorException({ msg: 'An internal error has occurred' });
+            throw new InternalServerErrorException({ msg: 'Ocorreu um erro interno' });
         }
     }
 
@@ -111,7 +111,7 @@ export class CompanyService {
             const deletedCompany = await this.companyRepository.delete({ id: Number(id) });
             return deletedCompany;
         } catch {
-            throw new InternalServerErrorException({ msg: 'An internal error has occurred' });
+            throw new InternalServerErrorException({ msg: 'Ocorreu um erro interno' });
         }
     }
 }

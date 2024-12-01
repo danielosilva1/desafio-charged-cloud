@@ -1,6 +1,5 @@
 import { ConflictException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { validate, validateOrReject } from 'class-validator';
 import { Address } from 'src/type-orm/entities/Address';
 import { addressDetails } from 'src/utils/types';
 import { Repository } from 'typeorm';
@@ -27,7 +26,7 @@ export class AddressService {
 
             if (addressExists) {
                 // Endereço existe, retorna exceção
-                throw new ConflictException('Address already exists');
+                throw new ConflictException('Endereço já está cadastrado');
             }
 
             // Endereço não existe: cadastra
@@ -38,7 +37,7 @@ export class AddressService {
                 // Recupera o erro lançado na função para informar que o endereço já existe
                 throw new ConflictException({ msg: error.message });
             }
-            throw new InternalServerErrorException({ msg: 'An internal error has occurred' });
+            throw new InternalServerErrorException({ msg: 'Um erro interno ocorreu' });
         }
     }
 
@@ -47,7 +46,7 @@ export class AddressService {
             const addresses = await this.addressRepositoy.find();
             return addresses;
         } catch {
-            throw new InternalServerErrorException({ msg: 'An internal error has occurred' });
+            throw new InternalServerErrorException({ msg: 'Um erro interno ocorreu' });
         }
     }
 }

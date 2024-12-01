@@ -8,13 +8,13 @@ export class AddressController {
     constructor(@Inject('ADDRESS_SERVICE') private readonly addressService: AddressService) {}
 
     @Post('create')
-    async createAddres(@Req() req: Request | any, @Body() address: Address) {
-        // Valida se usuário está autenticadp
+    async createAddress(@Req() req: Request | any, @Body() address: Address) {
+        // Valida se usuário está autenticado
         if (req.user) {
             const newAdress = await this.addressService.createAddress(address);
             return newAdress;
         }
-        throw new UnauthorizedException({ msg: 'User is not authenticated' });
+        throw new UnauthorizedException({ msg: 'Usuário não está autenticado' });
     }
 
     @Get('get-all')
@@ -24,6 +24,6 @@ export class AddressController {
             const addresses = await this.addressService.getAllAddresses();
             return addresses;
         }
-        throw new UnauthorizedException({ msg: 'User is not authenticated' });
+        throw new UnauthorizedException({ msg: 'Usuário não está autenticado' });
     }
 }

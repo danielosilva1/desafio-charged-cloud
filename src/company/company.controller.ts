@@ -15,7 +15,7 @@ export class CompanyController {
             const newCompany = await this.companyService.createCompany(company);
             return newCompany;
         }
-        throw new UnauthorizedException({ msg: 'User is not authenticated' });
+        throw new UnauthorizedException({ msg: 'Usuário não autenticado' });
     }
 
     @Get('get')
@@ -25,7 +25,7 @@ export class CompanyController {
             const companies = this.companyService.getCompanies(cnpj, name);
             return companies;
         }
-        throw new UnauthorizedException({ msg: 'User is not authenticated' });
+        throw new UnauthorizedException({ msg: 'Usuário não autenticado' });
     }
 
     @Patch('update/:id')
@@ -35,7 +35,7 @@ export class CompanyController {
             const updatedCompany = await this.companyService.updateCompany(id, company);
             return updatedCompany;
         }
-        throw new UnauthorizedException({ msg: 'User is not authenticated' });
+        throw new UnauthorizedException({ msg: 'Usuário não autenticado' });
     }
 
     @Delete('delete/:id')
@@ -44,7 +44,7 @@ export class CompanyController {
             const deletedCompany = await this.companyService.deleteCompany(id);
             return deletedCompany;
         }
-        throw new UnauthorizedException({ msg: 'User is not authenticated' });
+        throw new UnauthorizedException({ msg: 'Usuário não autenticado' });
     }
 
     capitalizeTextualFields(company: CompanyDetails) {

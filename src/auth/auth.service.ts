@@ -23,7 +23,7 @@ export class AuthService {
             const newUser = this.userRepository.create(details);
             return this.userRepository.save(newUser);
         } catch {
-            throw new InternalServerErrorException({msg: 'Ocorreu um erro ao processar requisição'});
+            throw new InternalServerErrorException({msg: 'Um erro interno ocorreu'});
         }
     }
 
