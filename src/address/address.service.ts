@@ -18,7 +18,7 @@ export class AddressService {
                     street: address.street,
                     neighborhood: address.neighborhood,
                     number: address.number,
-                    additionalInfo: address.additionalInfo,
+                    additionalInfo: address.additionalInfo == '' ? null : address.additionalInfo,
                     city: address.city,
                     state: address.state
                 }

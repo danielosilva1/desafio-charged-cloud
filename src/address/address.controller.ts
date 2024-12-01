@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Inject, Post, Req, UnauthorizedException } from '@nestjs/common';
 import { AddressService } from './address.service';
-import { Address } from 'src/type-orm/entities/Address';
+import { addressDetails } from 'src/utils/types';
 
 @Controller('address')
 export class AddressController {
@@ -8,9 +8,10 @@ export class AddressController {
     constructor(@Inject('ADDRESS_SERVICE') private readonly addressService: AddressService) {}
 
     @Post('create')
-    async createAddress(@Req() req: Request | any, @Body() address: Address) {
+    async createAddress(@Req() req: Request | any, @Body() address: addressDetails) {
         // Valida se usuário está autenticado
         if (req.user) {
+            address = this.capitalizeTextualFields(address);
             const newAdress = await this.addressService.createAddress(address);
             return newAdress;
         }
@@ -25,5 +26,14 @@ export class AddressController {
             return addresses;
         }
         throw new UnauthorizedException({ msg: 'Usuário não está autenticado' });
+    }
+
+    capitalizeTextualFields(address: addressDetails) {
+        address.street = address.street.toUpperCase();
+        address.neighborhood = address.neighborhood.toUpperCase();
+        address.additionalInfo = address.additionalInfo.toUpperCase();
+        address.city = address.city.toUpperCase();
+        address.state = address.state.toUpperCase();
+        return address;
     }
 }
