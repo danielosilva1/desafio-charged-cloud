@@ -5,27 +5,21 @@ import { addressDetails } from 'src/utils/types';
 @Controller('address')
 export class AddressController {
     // Injeta dependência de AUTH_SERVICE para obter funções de manipulação dos endereços
-    constructor(@Inject('ADDRESS_SERVICE') private readonly addressService: AddressService) {}
+    constructor(@Inject('ADDRESS_SERVICE') private readonly addressService: AddressService) { }
 
     @Post('create')
     async createAddress(@Req() req: Request | any, @Body() address: addressDetails) {
         // Valida se usuário está autenticado
-        if (req.user) {
-            address = this.capitalizeTextualFields(address);
-            const newAdress = await this.addressService.createAddress(address);
-            return newAdress;
-        }
-        throw new UnauthorizedException({ msg: 'Usuário não está autenticado' });
+        address = this.capitalizeTextualFields(address);
+        const newAdress = await this.addressService.createAddress(address);
+        return newAdress;
     }
 
     @Get('get-all')
     async getAddresses(@Req() req: Request | any) {
         // Valida se usuário está autenticado
-        if (req.user) {
-            const addresses = await this.addressService.getAllAddresses();
-            return addresses;
-        }
-        throw new UnauthorizedException({ msg: 'Usuário não está autenticado' });
+        const addresses = await this.addressService.getAllAddresses();
+        return addresses;
     }
 
     capitalizeTextualFields(address: addressDetails) {
