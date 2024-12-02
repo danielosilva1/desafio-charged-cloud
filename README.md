@@ -146,6 +146,26 @@ Inicialmente, eu acreditava que um endereço poderia abrigar apenas uma empresa.
 No entanto, observei que um endereço pode, sim, abrigar mais de uma empresa (veja a fundamentação legal [aqui](https://www.jlramos.com.br/blog/e-possivel-ter-duas-ou-mais-empresas-no-mesmo-endereco-entenda-regras-e-limitacoes/)). Nesse caso, a ideia inicial poderia gerar redundância de endereços no banco. Portanto, optei por criar a tabela Endereço e definir um relacionamento entre Empresa e Endereço de forma que a ideia *"uma empresa está localizada em um único endereço e um endereço pode abrigar 0 ou mais empresas"* pudesse ser expressa.
 
 
+# Sobre o Auth 2.0
+
+Esse requisito não foi finalizado. A implementação no backend foi realizada e a autenticação funciona se a requisição for enviada diretamente do navegador. Porém, na etapa de integração com o frontend, obtive um erro de CORS que ainda não consegui superar.
+
+Tentei enviar as requisições via fetch, mas sem sucesso. Adicionalmente, também adicionei o arquivo de configuração de CORS à Google Cloud Storage na tentativa de que o redirecionamento envolvendo o serviço de autenticação não fosse barrado, mas novamente não adiantou.
+
+Dessa forma, aproximando-se do prazo final para conclusão do desafio, achei por bem dedicar-me à conclusão desse relatório e à revisão do projeto.
+
+Os demais requisitos da especificação foram implementados e integrados com o frontend (veja algumas imagens de telas abaixo)
+
+# Resultados
+
+Executando o código disponível na main (com implementação da autenticação) todas as telas (com exceção da inicial, que é pública) mostrarão em algum momento avisos como os das imagens abaixo.
+
+![alt text](documentation/erro-busca-empresas.png)
+
+![alt text](documentation/erro-cadastro-endereco.png)
+
+<br></br>
+
 <br></br>
 # Instruções de Instalação e Execução Localmente
 
