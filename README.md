@@ -20,6 +20,8 @@ Desenvolver uma aplicação web utilizando Nest.js, Vite e MySQL que permita ger
 3. [Instruções para Instalação e Execução do Projeto](#Instruções-de-Instalação-e-Execução-Localmente)
     - [Configuração do Banco MySQL Localmente](#Configurando-o-banco-de-dados-MySQL-localmente)
     - [Instalação e Execução do Projeto Localmente](#Instalando-e-executando-o-projeto)
+4. [Sonbre o Auth 2.0](#Sobre-o-Auth-20)
+5. [Resultados](#Resultados)
 
 <br></br>
 # Especificação dos Requisitos Funcionais
@@ -154,17 +156,36 @@ Tentei enviar as requisições via fetch, mas sem sucesso. Adicionalmente, tamb�
 
 Dessa forma, aproximando-se do prazo final para conclusão do desafio, achei por bem dedicar-me à conclusão desse relatório e à revisão do projeto.
 
-Os demais requisitos da especificação foram implementados e integrados com o frontend (veja algumas imagens de telas abaixo)
+Os demais requisitos da especificação foram implementados e integrados com o frontend (veja algumas imagens de telas abaixo).
 
 # Resultados
 
-Executando o código disponível na main (com implementação da autenticação) todas as telas (com exceção da inicial, que é pública) mostrarão em algum momento avisos como os das imagens abaixo.
+**Executando o código disponível na branch main (com implementação da autenticação) todas as telas (com exceção da inicial, que é pública) mostrarão em algum momento avisos como os das imagens abaixo:**
 
 ![alt text](documentation/erro-busca-empresas.png)
 
 ![alt text](documentation/erro-cadastro-endereco.png)
 
-<br></br>
+
+**Desconsiderando a autenticação, a aplicação se comporta assim (versão disponível na branch no-auth):**
+
+![alt text](documentation/inicio.png)
+
+![alt text](documentation/painel.png)
+
+![alt text](documentation/cadastro-empresa.png)
+
+![alt text](documentation/cadastro-empresa-sucesso.png)
+
+![alt text](documentation/cadastro-endereco.png)
+
+![alt text](documentation/cadastro-endereco-sucesso.jpg)
+
+![alt text](documentation/atualizacao-empresa.png)
+
+![alt text](documentation/atualizacao-empresa-sucesso.jpg)
+
+![alt text](documentation/consulta-empresas.png)
 
 <br></br>
 # Instruções de Instalação e Execução Localmente
