@@ -15,7 +15,6 @@ export class AuthService {
             const userExists = await this.userRepository.findOneBy({ email: user.email });
 
             if (userExists) {
-                console.log("Usuário já existe: vou gerar token");
                 // Usuário já cadastrado: atualiza seu nome
                 userExists.name = user.name;
 
@@ -24,7 +23,6 @@ export class AuthService {
                 // Retorna token com nome e email do usuário como payload
                 return this.jwtService.sign(user);
             } else {
-                console.log("Usuário já existe: vou CADASTRAR e gerar token");
                 // Usuário não encontrado: cadastra usuário
                 const { name, email } = user;
                 return await this.registerUser({ name, email });
