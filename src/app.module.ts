@@ -2,15 +2,12 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
-import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './type-orm/entities/User';
 import { PassportModule } from '@nestjs/passport';
-import { AddressModule } from './address/address.module';
 import { Address } from './type-orm/entities/Address';
 import { Company } from './type-orm/entities/Company';
-import { CompanyModule } from './company/company.module';
 
 @Module({
 	imports: [
@@ -26,11 +23,9 @@ import { CompanyModule } from './company/company.module';
 			synchronize: true,
 		}),
 		PassportModule.register({ session: true }),
-		AuthModule,
-		AddressModule,
-		CompanyModule
+		AuthModule
 	],
-	controllers: [AuthController, AppController],
+	controllers: [AppController],
 	providers: [AppService],
 })
 export class AppModule { }
