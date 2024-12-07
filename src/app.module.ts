@@ -8,6 +8,9 @@ import { User } from './type-orm/entities/User';
 import { PassportModule } from '@nestjs/passport';
 import { Address } from './type-orm/entities/Address';
 import { Company } from './type-orm/entities/Company';
+import { AddressModule } from './address/address.module';
+import { JwtModule } from './auth/jwt/jwt.module';
+import { CompanyModule } from './company/company.module';
 
 @Module({
 	imports: [
@@ -22,7 +25,10 @@ import { Company } from './type-orm/entities/Company';
 			entities: [User, Address, Company ],
 			synchronize: true,
 		}),
-		AuthModule
+		AuthModule,
+		JwtModule,
+		AddressModule,
+		CompanyModule
 	],
 	controllers: [AppController],
 	providers: [AppService],

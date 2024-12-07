@@ -21,8 +21,18 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
                 token = req.cookies['access_token'];
             }
 
-            // Se token não for passado por cookies, extrai o token passado no cabeçalho de autenticação Bearer
-            return token || ExtractJwt.fromAuthHeaderAsBearerToken()(req);
+            if (!token) {
+                // Token não foi passado por cookie: tenta extrair token passado no cabeçalho de autenticação Bearer
+                token = ExtractJwt.fromAuthHeaderAsBearerToken()(req);
+            }
+
+            if (!token) {
+                // Token realmente ausente: lança erro de não autorização
+                throw new UnauthorizedException({msg: 'Usuário não autenticado'});
+            }
+
+            // Um token foi informado: retorna-o
+            return token;
         }
 
         super({
