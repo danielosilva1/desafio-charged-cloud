@@ -9,7 +9,7 @@ import { AuthService } from '../auth.service';
 export class GoogleStrategy extends PassportStrategy(Strategy) {
     constructor(
         // Injeta dependência para que possa chamar as funções do AuthService
-        @Inject('AUTH_SERVICE') private readonly authService: AuthService
+        @Inject(AuthService) private readonly authService: AuthService
     ) {
         super({
             clientID: process.env.GOOGLE_CLIENT_ID,
