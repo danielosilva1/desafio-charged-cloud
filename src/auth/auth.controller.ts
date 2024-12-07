@@ -21,8 +21,6 @@ export class AuthController {
     async handleRedirect(@Req() req, @Res() res) {
         const token = await this.authService.signIn(req.user);
 
-        console.log(`TOKEN ENVIADO: ${token}`);
-
         // Redireciona para a tela inicial do front mandando token gerado como parâmetro da url
         res.redirect(`${process.env.FRONT_BASE_URL}?token=${token}`);
     }

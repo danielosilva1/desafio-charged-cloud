@@ -21,7 +21,7 @@ export class AuthService {
                 const updatedUser = await this.userRepository.save(user);
 
                 // Retorna token com nome e email do usuário como payload
-                return this.jwtService.sign(user);
+                return this.jwtService.sign({ email: user.email, name: user.name});
             } else {
                 // Usuário não encontrado: cadastra usuário
                 const { name, email } = user;

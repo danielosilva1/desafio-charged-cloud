@@ -22,7 +22,6 @@ import { Company } from './type-orm/entities/Company';
 			entities: [User, Address, Company ],
 			synchronize: true,
 		}),
-		PassportModule.register({ session: true }),
 		AuthModule
 	],
 	controllers: [AppController],
