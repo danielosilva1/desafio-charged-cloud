@@ -24,8 +24,4 @@ export class AuthController {
         // Redireciona para a tela inicial do front mandando token gerado como parâmetro da url
         res.redirect(`${process.env.FRONT_BASE_URL}?token=${token}`);
     }
-
-    @Get('status')
-    user(@Req() req: Request | any) {
-    }
 }

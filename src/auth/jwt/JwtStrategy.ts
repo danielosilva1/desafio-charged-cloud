@@ -6,7 +6,6 @@ import { User } from "src/type-orm/entities/User";
 import { JwtPayload } from "src/utils/types";
 import { Repository } from "typeorm";
 
-
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     // Injeta repositório para buscar usuário por email na hora de validar token
@@ -28,7 +27,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
 
             if (!token) {
                 // Token realmente ausente: lança erro de não autorização
-                throw new UnauthorizedException({msg: 'Usuário não autenticado'});
+                throw new UnauthorizedException({ msg: 'Usuário não autenticado' });
             }
 
             // Um token foi informado: retorna-o
@@ -48,7 +47,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
 
         if (!user) {
             // Usuário não foi encontrado com base no nome presente no payload do cookie: requisição não autorizada
-            throw new UnauthorizedException({msg: 'Usuário não autenticado'});
+            throw new UnauthorizedException({ msg: 'Usuário não autenticado' });
         }
 
         return payload;

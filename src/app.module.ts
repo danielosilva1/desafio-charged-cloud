@@ -5,7 +5,6 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './type-orm/entities/User';
-import { PassportModule } from '@nestjs/passport';
 import { Address } from './type-orm/entities/Address';
 import { Company } from './type-orm/entities/Company';
 import { AddressModule } from './address/address.module';
