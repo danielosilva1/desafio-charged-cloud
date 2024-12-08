@@ -1,6 +1,7 @@
 import { Controller, Get, Inject, Req, Res, UseGuards } from '@nestjs/common';
 import { GoogleAuthGuard } from './utils/Guards';
 import { AuthService } from './auth.service';
+import { JwtAuthGuard } from './jwt/JwtAuthGuard';
 
 @Controller('auth')
 export class AuthController {
@@ -23,5 +24,13 @@ export class AuthController {
 
         // Redireciona para a tela inicial do front mandando token gerado como parâmetro da url
         res.redirect(`${process.env.FRONT_BASE_URL}?token=${token}`);
+    }
+
+    // Retorna 200 se usuário está autenticado. Caso contrário, middleware de autenticação retorna 401
+    @Get('status')
+    @UseGuards(JwtAuthGuard)
+    status(@Res() res) {
+        // Se passar pela autenticação do JWT retorna 200
+        res.status(200).json({ msg: 'Usuário autenticado' });
     }
 }
