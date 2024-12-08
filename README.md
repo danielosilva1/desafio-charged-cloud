@@ -17,11 +17,10 @@ Desenvolver uma aplicação web utilizando Nest.js, Vite e MySQL que permita ger
     - [Especificação completa das Histórias de Usuário (Trello)](#-A-especificação-das-histórias-de-usuário-e-a-gestão-dos-cards-foram-realizadas-no-trello-e-podem-ser-acessadas-aqui)
 2. [Definição de Diagrama Entidade Relacionamento](#Definição-de-um-Diagrama-Entidade-Relacionamento)
     - [📋 Discussão sobre decisão técnica](#-Decisão-Técnica-Relacionamento-entre-Empresa-e-Endereço)
-3. [Instruções para Instalação e Execução do Projeto](#Instruções-de-Instalação-e-Execução-Localmente)
+3. [Resultados](#Resultados)
+4. [Instruções para Instalação e Execução do Projeto](#Instruções-de-Instalação-e-Execução-Localmente)
     - [Configuração do Banco MySQL Localmente](#Configurando-o-banco-de-dados-MySQL-localmente)
     - [Instalação e Execução do Projeto Localmente](#Instalando-e-executando-o-projeto)
-4. [Sonbre o Auth 2.0](#Sobre-o-Auth-20)
-5. [Resultados](#Resultados)
 
 <br></br>
 # Especificação dos Requisitos Funcionais
@@ -148,26 +147,9 @@ Inicialmente, eu acreditava que um endereço poderia abrigar apenas uma empresa.
 No entanto, observei que um endereço pode, sim, abrigar mais de uma empresa (veja a fundamentação legal [aqui](https://www.jlramos.com.br/blog/e-possivel-ter-duas-ou-mais-empresas-no-mesmo-endereco-entenda-regras-e-limitacoes/)). Nesse caso, a ideia inicial poderia gerar redundância de endereços no banco. Portanto, optei por criar a tabela Endereço e definir um relacionamento entre Empresa e Endereço de forma que a ideia *"uma empresa está localizada em um único endereço e um endereço pode abrigar 0 ou mais empresas"* pudesse ser expressa.
 
 
-# Sobre o Auth 2.0
-
-Esse requisito não foi finalizado. A implementação no backend foi realizada e a autenticação funciona se a requisição for enviada diretamente do navegador. Porém, na etapa de integração com o frontend, obtive um erro de CORS que ainda não consegui superar.
-
-Tentei enviar as requisições via fetch, mas sem sucesso. Adicionalmente, também adicionei o arquivo de configuração de CORS à Google Cloud Storage na tentativa de que o redirecionamento envolvendo o serviço de autenticação não fosse barrado, mas novamente não adiantou.
-
-Dessa forma, aproximando-se do prazo final para conclusão do desafio, achei por bem dedicar-me à conclusão desse relatório e à revisão do projeto.
-
-Os demais requisitos da especificação foram implementados e integrados com o frontend (veja algumas imagens de telas abaixo).
-
 # Resultados
 
-**Executando o código disponível na branch main (com implementação da autenticação) todas as telas (com exceção da inicial, que é pública) mostrarão em algum momento avisos como os das imagens abaixo:**
-
-![alt text](documentation/erro-busca-empresas.png)
-
-![alt text](documentation/erro-cadastro-endereco.png)
-
-
-**Desconsiderando a autenticação, a aplicação se comporta assim (versão disponível na branch no-auth):**
+**✔️ Todos os requisitos foram implementados.**
 
 ![alt text](documentation/inicio.png)
 
@@ -191,7 +173,7 @@ Os demais requisitos da especificação foram implementados e integrados com o f
 # Instruções de Instalação e Execução Localmente
 
 ## Configurando o banco de dados MySQL localmente
-Altere os campos DATABASE_USERNAME, DATABASE_PASSWORD e DATABASE_NAME no arquivo .env fornecido para o usuário, senha e nome do banco do seu banco MySQL local
+Altere os campos DATABASE_USERNAME, DATABASE_PASSWORD e DATABASE_NAME no arquivo .env fornecido para o usuário, senha e nome do banco do seu banco MySQL local.
 
 ## Instalando e executando o projeto
 1. Clone o projeto para a sua máquina;
