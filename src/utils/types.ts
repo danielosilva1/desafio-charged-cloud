@@ -19,3 +19,8 @@ export type CompanyDetails = {
     phoneNumber: string;
     addressId: number;
 }
+
+export type JwtPayload = {
+    email: string,
+    name: string
+}

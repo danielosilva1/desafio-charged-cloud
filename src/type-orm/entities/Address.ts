@@ -1,4 +1,3 @@
-import { IsInt, Min } from 'class-validator';
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { Company } from './Company';
 

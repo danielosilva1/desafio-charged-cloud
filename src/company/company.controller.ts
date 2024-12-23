@@ -9,42 +9,30 @@ export class CompanyController {
 
     @Post('create')
     async createCompany(@Req() req: Request | any, @Body() company: CompanyDetails) {
-        if (req.user) {
-            company = this.capitalizeTextualFields(company);
+        company = this.capitalizeTextualFields(company);
 
-            const newCompany = await this.companyService.createCompany(company);
-            return newCompany;
-        }
-        throw new UnauthorizedException({ msg: 'Usuário não autenticado' });
+        const newCompany = await this.companyService.createCompany(company);
+        return newCompany;
     }
 
     @Get('get')
     getCompanies(@Req() req: Request | any, @Query() params: any) {
-        if (req.user) {
-            const { cnpj, name } = params;
-            const companies = this.companyService.getCompanies(cnpj, name);
-            return companies;
-        }
-        throw new UnauthorizedException({ msg: 'Usuário não autenticado' });
+        const { cnpj, name } = params;
+        const companies = this.companyService.getCompanies(cnpj, name);
+        return companies;
     }
 
     @Patch('update/:id')
     async updateCompany(@Req() req: Request | any, @Param('id') id: string, @Body() company: CompanyDetails) {
-        if (req.user) {
-            company = this.capitalizeTextualFields(company);
-            const updatedCompany = await this.companyService.updateCompany(id, company);
-            return updatedCompany;
-        }
-        throw new UnauthorizedException({ msg: 'Usuário não autenticado' });
+        company = this.capitalizeTextualFields(company);
+        const updatedCompany = await this.companyService.updateCompany(id, company);
+        return updatedCompany;
     }
 
     @Delete('delete/:id')
     async deleteCompany(@Req() req: Request | any, @Param('id') id: string) {
-        if (req.user) {
-            const deletedCompany = await this.companyService.deleteCompany(id);
-            return deletedCompany;
-        }
-        throw new UnauthorizedException({ msg: 'Usuário não autenticado' });
+        const deletedCompany = await this.companyService.deleteCompany(id);
+        return deletedCompany;
     }
 
     capitalizeTextualFields(company: CompanyDetails) {

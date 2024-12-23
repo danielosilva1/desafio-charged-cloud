@@ -9,7 +9,7 @@ import { AuthService } from '../auth.service';
 export class GoogleStrategy extends PassportStrategy(Strategy) {
     constructor(
         // Injeta dependência para que possa chamar as funções do AuthService
-        @Inject('AUTH_SERVICE') private readonly authService: AuthService
+        @Inject(AuthService) private readonly authService: AuthService
     ) {
         super({
             clientID: process.env.GOOGLE_CLIENT_ID,
@@ -21,7 +21,8 @@ export class GoogleStrategy extends PassportStrategy(Strategy) {
 
     // Método será invocado logo após o usuário se autenticar com sucesso
     async validate(accessToken: string, refreshToken: string, profile: Profile, done: VerifyCallback) {
-        const user = await this.authService.validateUser({ email: profile._json.email, name: profile._json.name });
-        return user || null;
+        const user = { email: profile._json.email, name: profile._json.name };
+        
+        done(null, user);
     }
 }
